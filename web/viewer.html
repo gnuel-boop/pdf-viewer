@@ -53,10 +53,11 @@ See https://github.com/adobe-type-tools/cmap-resources
           return;
         }
     
-        // 👉 Appel direct, pas besoin d'attendre 'webviewerloaded'
-        PDFViewerApplication.open(pdfRawUrl);
+        // ✅ IMPORTANT : passer un objet {url: …}
+        PDFViewerApplication.open({ url: pdfRawUrl });
       });
     </script>
+    
     
     
     
