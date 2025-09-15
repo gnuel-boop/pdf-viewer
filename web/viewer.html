@@ -38,7 +38,11 @@ See https://github.com/adobe-type-tools/cmap-resources
     </script>
     
     <script type="module">
+      import * as pdfjsLib from "../build/pdf.mjs";
       import "./viewer.mjs";
+    
+      // Rendez pdfjsLib disponible globalement pour le code interne de PDF.js
+      window.pdfjsLib = pdfjsLib;
     
       document.addEventListener("webviewerloaded", () => {
         const params = new URLSearchParams(window.location.search);
@@ -48,11 +52,12 @@ See https://github.com/adobe-type-tools/cmap-resources
           return;
         }
     
-        // On passe l'URL du PDF à votre function proxy pour gérer CORS
+        // On passe l'URL du PDF via votre function proxy pour gérer le CORS
         const proxiedUrl = `https://legpdf.netlify.app/.netlify/functions/pdf-proxy?url=${encodeURIComponent(pdfRawUrl)}`;
         PDFViewerApplication.open(proxiedUrl);
       });
     </script>
+    
     
     
   </head>
