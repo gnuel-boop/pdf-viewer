@@ -41,21 +41,22 @@ See https://github.com/adobe-type-tools/cmap-resources
       import * as pdfjsLib from "../build/pdf.mjs";
       import "./viewer.mjs";
     
-      // Rendez pdfjsLib disponible globalement pour le code interne de PDF.js
       window.pdfjsLib = pdfjsLib;
     
       document.addEventListener("webviewerloaded", () => {
         const params = new URLSearchParams(window.location.search);
         const pdfRawUrl = params.get("doc");
+        console.log("DOC param reçu par viewer :", pdfRawUrl);  // <<=== AJOUTER CECI
+    
         if (!pdfRawUrl) {
           alert("Aucun paramètre 'doc' fourni.");
           return;
         }
     
-    
         PDFViewerApplication.open(pdfRawUrl);
       });
     </script>
+    
     
     
     
