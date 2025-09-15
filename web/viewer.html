@@ -43,20 +43,21 @@ See https://github.com/adobe-type-tools/cmap-resources
     
       window.pdfjsLib = pdfjsLib;
     
-      window.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const pdfRawUrl = params.get("doc");
-  console.log("DOC param reçu par viewer :", pdfRawUrl);
-  if (!pdfRawUrl) {
-    alert("Aucun paramètre 'doc' fourni.");
-    return;
-  }
-  // attendre que l'app PDF.js soit initialisée
-  document.addEventListener("webviewerloaded", () => {
-    PDFViewerApplication.open(pdfRawUrl);
-  });
-});
+      document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const pdfRawUrl = params.get("doc");
+        console.log("DOC param reçu par viewer :", pdfRawUrl);
+    
+        if (!pdfRawUrl) {
+          alert("Aucun paramètre 'doc' fourni.");
+          return;
+        }
+    
+        // 👉 Appel direct, pas besoin d'attendre 'webviewerloaded'
+        PDFViewerApplication.open(pdfRawUrl);
+      });
     </script>
+    
     
     
     
