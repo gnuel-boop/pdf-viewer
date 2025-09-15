@@ -32,7 +32,12 @@ See https://github.com/adobe-type-tools/cmap-resources
 <script src="../build/pdf.mjs" type="module"></script>
 
     <link rel="stylesheet" href="viewer.css">
-
+    <script>
+      // Désactiver la validation stricte d'origine pour autoriser les URLs absolues (même domaine)
+      window.PDFViewerApplicationOptions = window.PDFViewerApplicationOptions || {};
+      window.PDFViewerApplicationOptions.disableValidateFileURL = true;
+    </script>
+    
   <script src="viewer.mjs" type="module"></script>
   </head>
 
