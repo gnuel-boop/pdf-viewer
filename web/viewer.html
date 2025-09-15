@@ -38,7 +38,16 @@ See https://github.com/adobe-type-tools/cmap-resources
       window.PDFViewerApplicationOptions.disableValidateFileURL = true;
     </script>
     
-  <script src="viewer.mjs" type="module"></script>
+    <script type="module">
+      import "./viewer.mjs";
+    
+      document.addEventListener("webviewerloaded", () => {
+        // URL du PDF à afficher via la function proxy
+        const pdfUrl = "https://legpdf.netlify.app/.netlify/functions/pdf-proxy?url=https://client.dimo-diagnostic.net/api/file-reader/279313/2a310bfd-f52d-4660-ba47-c49b21150c25.pdf?key=a7ebfe72b63b410a";
+        PDFViewerApplication.open(pdfUrl);
+      });
+    </script>
+    
   </head>
 
   <body tabindex="0">
