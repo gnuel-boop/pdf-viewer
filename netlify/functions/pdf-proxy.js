@@ -25,6 +25,7 @@ export async function handler(event) {
       statusCode: 200,
       headers: {
         "Content-Type": "application/pdf",
+        "Content-Disposition": "inline; filename=file.pdf",
         "Access-Control-Allow-Origin": "*" // facultatif, mais utile si réutilisé ailleurs
       },
       body: Buffer.from(buffer).toString("base64"),
