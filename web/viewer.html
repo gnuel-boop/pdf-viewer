@@ -52,9 +52,8 @@ See https://github.com/adobe-type-tools/cmap-resources
           return;
         }
     
-        // On passe l'URL du PDF via votre function proxy pour gérer le CORS
-        const proxiedUrl = `https://legpdf.netlify.app/.netlify/functions/pdf-proxy?url=${encodeURIComponent(pdfRawUrl)}`;
-        PDFViewerApplication.open(proxiedUrl);
+    
+        PDFViewerApplication.open(pdfRawUrl);
       });
     </script>
     
